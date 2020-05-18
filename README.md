@@ -1,11 +1,11 @@
 # W8D1 - Unit & Integration Testing
 
 ### To Do
-- [ ] Tools for Testing React
-- [ ] Coverage Reports
-- [ ] Add Features to our App Following TDD
-- [ ] `debug()` and `prettyDOM()`
-- [ ] Mocking AJAX Requests
+- [x] Tools for Testing React
+- [x] Coverage Reports
+- [x] Add Features to our App Following TDD
+- [x] `debug()` and `prettyDOM()`
+- [x] Mocking AJAX Requests
 
 ### Add Features to our App Following TDD
 - Helper functions (unit tests)

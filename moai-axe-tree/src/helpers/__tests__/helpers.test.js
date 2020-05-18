@@ -1,4 +1,4 @@
-import { announceResult } from '../helpers'
+import { announceResult, chooseRobotItem } from '../helpers';
 
 let fakeState;
 
@@ -33,4 +33,26 @@ describe('announceResult function', () => {
   test('returns "Waiting" if nothing is passed in', () => {
     expect(announceResult()).toBe('Waiting');
   });
+});
+
+describe('chooseRobotItem function', () => {
+
+  test('should choose the winning item if cheating is true', () => {
+    fakeState.cheating = true;
+    fakeState.playerSelection = 'Axe';
+
+    const result = chooseRobotItem(fakeState.playerSelection, fakeState.cheating);
+    expect(result).toBe('Moai');
+  });
+
+  test('should choose a random item if cheating is false', () => {
+    fakeState.cheating = false;
+    fakeState.playerSelection = 'Axe';
+
+    const result = chooseRobotItem(fakeState.playerSelection, fakeState.cheating);
+    const options = ['Moai', 'Axe', 'Tree'];
+    // expect(options.includes(result)).toBeTruthy();
+    expect(options).toContain(result);
+  });
+
 });
