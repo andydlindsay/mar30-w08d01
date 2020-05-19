@@ -14,20 +14,26 @@ const data = {
   ]
 };
 
-test('shows appropriate message when the status is "Waiting"', () => {
-  const fakeState = {
+let fakeState;
+
+beforeEach(() => {
+  fakeState = {
     compSelection: null,
     playerSelection: null,
     status: 'Waiting',
     cheating: false
   };
-  
+});
+
+test('shows appropriate message when the status is "Waiting"', () => {
+  fakeState.status = 'Waiting';
   const { container } = render(<Result status={fakeState.status} />);
+
   expect(getByTestId(container, 'result_footer')).toHaveTextContent('Waiting for your choice!');
 });
 
 test('axios get test', async () => {
-  const { getByTestId, findByText, container } = render(<Result status="Waiting" />);
+  const { getByTestId, findByText, container } = render(<Result status={fakeState.status} />);
 
   // fake the axios get request
   axios.get.mockResolvedValueOnce({ data });
@@ -43,5 +49,5 @@ test('axios get test', async () => {
 
   // using async/await
   await findByText('Bob');
-  console.log(prettyDOM(container));
+  // console.log(prettyDOM(container));
 });
